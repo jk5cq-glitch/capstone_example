@@ -22,20 +22,19 @@ jobs:
       - name: Run tests with coverage + HTML
         run: pytest --cov=. --cov-report=term --cov-report=xml --cov-report=html
 
-      - name: Prepare artifact folder
+      - name: Prepare webpage
         run: |
           mkdir sites
           mv htmlcov sites/
           mv coverage.xml sites/
 
-      - name: Upload artifact
-        uses: actions/Upload-artifact@v4
+      - name: Upload artifacts
+        uses: actions/upload-pages-artifact@v4
         with:
-          name: coverage-report
-          path: site
+          path: ./sites
       
   Deploy:
-    needs: run-test
+    needs: deploy-pages
     runs-on: ubuntu-latest
     permissions:
       pages: write
