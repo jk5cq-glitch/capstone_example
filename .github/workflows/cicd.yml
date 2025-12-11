@@ -2,7 +2,7 @@ name: Python CICD
 
 on:
   push:
-    branches: [ main ]
+    branches: [ development ]
   pull_request:
 
 jobs:
@@ -20,9 +20,18 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run tests
-        run: pytest -q
-
-      - name: Run tests with coverage  
+      - name: Run tests with coverage + HTML
         run: pytest --cov=. --cov-report=term --cov-report=xml --cov-report=html
+
+      - name: Prepare artifact folder
+        run: |
+          mkdir sites
+          mv htmlcov sites/
+          mv coverage.xml sites/
+
+      - name: Upload artifact
+        uses: action/Upload-artifact@v4
+        with:
+          name: coverage-report
+          path: site
       
