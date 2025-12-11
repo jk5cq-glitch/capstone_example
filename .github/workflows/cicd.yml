@@ -4,7 +4,9 @@ on:
   push:
     branches: [ development ]
   pull_request:
-
+    branches: 
+      - development
+      
 jobs:
   run_test:
     runs-on: ubuntu-latest
