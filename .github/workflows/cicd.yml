@@ -1,4 +1,4 @@
-name: Python CICD
+name: Python CI
 
 on:
   push:
@@ -30,7 +30,7 @@ jobs:
           mv coverage.xml sites/
 
       - name: Upload artifact
-        uses: action/Upload-artifact@v4
+        uses: action/upload-artifact@v4
         with:
           name: coverage-report
           path: site
