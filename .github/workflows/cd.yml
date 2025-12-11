@@ -29,7 +29,7 @@ jobs:
           mv coverage.xml sites/
 
       - name: Upload artifact
-        uses: action/Upload-artifact@v4
+        uses: actions/Upload-artifact@v4
         with:
           name: coverage-report
           path: site
