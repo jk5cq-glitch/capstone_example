@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: 
       - development
-      
+
 jobs:
   run_test:
     runs-on: ubuntu-latest
@@ -32,7 +32,7 @@ jobs:
           mv coverage.xml sites/
 
       - name: Upload artifact
-        uses: action/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: site
